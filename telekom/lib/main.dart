@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'package:telekom/db_keys.dart';
-import 'package:telekom/home_page.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import 'package:telekom/provider/navbar_provider.dart';
+import 'package:telekom/static/std.dart';
+import 'package:telekom/ui/pages/home_page.dart';
 
 void main() async {
-  // Initialize Hive
-  await Hive.initFlutter();
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      systemNavigationBarColor: Std.color.primary,
+      statusBarColor: Std.color.transparent,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+  );
 
-  final box = await Hive.openBox(DBKeys.firstBox);
+  // // Initialize Hive
+  // await Hive.initFlutter();
 
-  runApp(const MainApp());
+  // final box = await Hive.openBox(DBKeys.firstBox);
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => NavBarProvider()),
+      ],
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -17,7 +36,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
