@@ -35,6 +35,10 @@ class LogicProvider extends ChangeNotifier {
     if (text.length > 10) return;
     if (text.isEmpty && n == "0") return;
     text += n;
+    int num = int.parse(text);
+    if (num > 144) {
+      text = text.substring(0, text.length - 1);
+    }
     notifyListeners();
   }
 
