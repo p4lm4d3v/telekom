@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:telekom/provider/navbar_provider.dart';
-import 'package:telekom/static/std.dart';
+import 'package:telekom/static/std/std.dart';
 import 'package:telekom/ui/navbar/navbar_items.dart';
 
 class NavBar extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:telekom/static/std.dart';
+import 'package:telekom/static/std/std.dart';
 import 'package:telekom/ui/pages/overview/cable_groups_list.dart';
 
 class OverviewPage extends StatelessWidget {

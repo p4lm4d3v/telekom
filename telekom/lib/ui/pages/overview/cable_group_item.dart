@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:telekom/static/std.dart';
+import 'package:telekom/static/std/std.dart';
 import 'package:telekom/ui/pages/overview/cable-page/cable_page.dart';
 
 class CableGroupItem extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:telekom/static/std.dart';
+import 'package:telekom/static/std/std.dart';
 
 import 'navbar_item.dart';
 

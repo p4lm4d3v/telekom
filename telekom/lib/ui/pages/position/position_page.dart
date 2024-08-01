@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:numpad_layout/widgets/numpad.dart';
 import 'package:provider/provider.dart';
-import 'package:telekom/logic/logic_provider.dart';
-import 'package:telekom/logic/colors/tia.dart';
-import 'package:telekom/static/std.dart';
+import 'package:telekom/provider/logic_provider.dart';
+import 'package:telekom/static/std/std.dart';
+import 'package:telekom/ui/pages/position/color_code_widget.dart';
 import 'package:telekom/ui/pages/position/data_container_row.dart';
+import 'package:telekom/ui/pages/position/thead_count_widget.dart';
 
 class PositionPage extends StatelessWidget {
   const PositionPage({super.key});
@@ -16,8 +17,9 @@ class PositionPage extends StatelessWidget {
     final pos = logicProvider.pos == -1 ? "_" : "${logicProvider.pos}";
     final id = logicProvider.id == -1 ? "_" : "${logicProvider.id}";
     final row = logicProvider.row == -1 ? "_" : "${logicProvider.row}";
-    final colorText = logicProvider.color == Tia.tia ? "_" : logicProvider.color.toString();
-    final color = logicProvider.color == Tia.tia ? Std.color.black : logicProvider.color.color;
+
+    final colorName = logicProvider.getName(logicProvider.id);
+    final colorValue = logicProvider.getColor(logicProvider.id);
 
     return Scaffold(
       backgroundColor: Std.color.primary,
@@ -35,17 +37,25 @@ class PositionPage extends StatelessWidget {
                       DataContainerRow(dataName: "Pozicija: ", data: pos),
                       DataContainerRow(dataName: "Red: ", data: row),
                       DataContainerRow(dataName: "Broj: ", data: id),
-                      DataContainerRow(dataName: "Boja: ", data: colorText, color: color),
+                      DataContainerRow(dataName: "Boja: ", data: colorName, color: colorValue),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const TheadCountWidget(),
+                          Std.space.W10,
+                          const ColorGroupWidget(),
+                        ],
+                      ),
                     ],
                   ),
                 ),
               ),
               Std.space.H20,
               NumPad(
-                onType: (text) => logicProvider.add(text),
+                onType: (text) => logicProvider.pushNumber(text),
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 leftWidget: IconButton(
-                  onPressed: logicProvider.clear,
+                  onPressed: logicProvider.clearText,
                   icon: Icon(
                     Std.icon.block,
                     color: Std.color.black,
@@ -53,7 +63,7 @@ class PositionPage extends StatelessWidget {
                   ),
                 ),
                 rightWidget: IconButton(
-                  onPressed: logicProvider.pop,
+                  onPressed: logicProvider.popNumber,
                   icon: Icon(
                     Std.icon.backspace,
                     color: Std.color.black,

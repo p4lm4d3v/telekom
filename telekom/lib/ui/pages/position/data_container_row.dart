@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:telekom/functions/width.dart';
-import 'package:telekom/static/std.dart';
+import 'package:telekom/static/std/std.dart';
 
 class DataContainerRow extends StatelessWidget {
   const DataContainerRow({

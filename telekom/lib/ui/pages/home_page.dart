@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:telekom/provider/navbar_provider.dart';
-import 'package:telekom/static/std.dart';
+import 'package:telekom/static/std/std.dart';
 // import 'package:hive/hive.dart';
 // import 'package:telekom/model/db_keys.dart';
 import 'package:telekom/ui/navbar/navbar.dart';
