@@ -7,7 +7,8 @@ impl Machine {
     pub fn get(n: i32) -> Option<Cable<Tia>> {
         let row: i32 = Machine::get_row(n);
         let id: i32 = Machine::get_id(n);
-        Some(Cable::new(row, id, Tia::get((id - 1) as usize)))
+        let color: Tia = Tia::get((id - 1) as usize);
+        Some(Cable::new(row, id, color))
     }
     pub fn get_row(n: i32) -> i32 {
         (n - 1) / 12 + 1
