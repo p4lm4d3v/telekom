@@ -13,7 +13,8 @@ impl<C: Color + Display> Cable<C> {
     pub fn new(row: i32, id: i32, color: C) -> Self {
         Self { color, row, id }
     }
-    pub fn write(&self) {
+    pub fn write(&self, n: i32) {
+        println!("Pozicija: {}", n);
         println!("Red: {}", self.row);
         println!("Broj: {}", self.id);
         println!("Boja: {}", self.color);
