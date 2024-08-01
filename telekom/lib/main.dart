@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:telekom/logic/logic_provider.dart';
 import 'package:telekom/provider/navbar_provider.dart';
 import 'package:telekom/static/std.dart';
 import 'package:telekom/ui/pages/home_page.dart';
@@ -25,6 +26,7 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => NavBarProvider()),
+        ChangeNotifierProvider(create: (_) => LogicProvider()),
       ],
       child: const MainApp(),
     ),

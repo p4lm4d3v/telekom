@@ -11,4 +11,6 @@ class StdIcon {
   IconData tubes = Icons.list_alt;
   IconData setting = Icons.settings;
   IconData algorithm = Icons.alternate_email;
+  IconData backspace = Icons.backspace_outlined;
+  IconData block = Icons.block;
 }

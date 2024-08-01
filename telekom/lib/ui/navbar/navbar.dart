@@ -18,7 +18,7 @@ class NavBar extends StatelessWidget {
         color: Std.color.transparent,
         border: Border(
           top: BorderSide(
-            color: Std.color.secondary,
+            color: Std.color.tertiary,
           ),
         ),
       ),
