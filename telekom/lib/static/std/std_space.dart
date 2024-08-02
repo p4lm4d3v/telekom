@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:telekom/static/std/std.dart';
 
 class StdSpace {
   SizedBox get zero => const SizedBox(height: 0, width: 0);
@@ -21,8 +22,16 @@ class StdSpace {
   SizedBox get W100 => const SizedBox(width: 100);
   SizedBox get W200 => const SizedBox(width: 200);
 
-  Widget line(Color color, double h) => Container(
-        color: color,
-        height: h,
-      );
+  Widget line({
+    Color color = Colors.black,
+    double height = 2,
+    double horizontal = 0,
+    double vertical = 0,
+  }) {
+    return Container(
+      margin: Std.padding.symmetric(horizontal, vertical),
+      color: color,
+      height: height,
+    );
+  }
 }

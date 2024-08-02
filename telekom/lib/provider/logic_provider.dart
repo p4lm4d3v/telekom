@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:telekom/model/color_group.dart';
+import 'package:flutter/rendering.dart';
+import 'package:telekom/model/color_code.dart';
 import 'package:telekom/model/thread_count.dart';
 import 'package:telekom/static/default_color_groups.dart';
 import 'package:telekom/static/std/std.dart';
 
 class LogicProvider extends ChangeNotifier {
-  String text = "";
+  final input = LogicInput();
+  final threadCount = LogicTheadCount();
+  final colorCode = LogicColorCode();
 
-  ThreadCount count = ThreadCount.twelve;
-  List<ThreadCount> allCounts = [
-    ThreadCount.six,
-    ThreadCount.twelve,
-    ThreadCount.twentyFour,
-  ];
-
-  String colorGroupName = "tia";
-  List<String> allColorGroups = ["tia", "tkf"];
-
-  int get pos => int.tryParse(text) ?? -1;
+  int get pos => int.tryParse(input.text) ?? -1;
   bool get valid => pos != -1;
   int get row => valid ? (pos - 1) ~/ 12 + 1 : -1;
   int get id => valid
@@ -26,12 +19,24 @@ class LogicProvider extends ChangeNotifier {
           : pos % 12
       : -1;
 
-  String get countText => count.toString();
-  List<String> get allCountTexts => allCounts.map((count) => count.toString()).toList();
+  void notify(void Function() function) {
+    function();
+    notifyListeners();
+  }
 
-  ColorGroup get colorGroup => defaultColorCodes[colorGroupName]!;
+  void pushNumber(String n) => notify(() => input.push(n));
+  void popNumber() => notify(() => input.pop());
+  void clearText() => notify(() => input.clear());
 
-  void pushNumber(String n) {
+  void cycleTheadCount() => notify(() => threadCount.cycle());
+
+  void cycleColorCode() => notify(() => colorCode.cycle());
+}
+
+class LogicInput {
+  String text = "";
+
+  void push(String n) {
     if (text.length > 10) return;
     if (text.isEmpty && n == "0") return;
     text += n;
@@ -39,37 +44,65 @@ class LogicProvider extends ChangeNotifier {
     if (num > 144) {
       text = text.substring(0, text.length - 1);
     }
-    notifyListeners();
   }
 
-  void popNumber() {
+  void pop() {
     if (text.isEmpty) return;
     text = text.substring(0, text.length - 1);
-    notifyListeners();
   }
 
-  void clearText() {
+  void clear() {
     text = "";
-    notifyListeners();
   }
+}
 
-  void cycleCount() {
+class LogicTheadCount {
+  ThreadCount count = ThreadCount.twelve;
+  List<ThreadCount> allCounts = [
+    ThreadCount.six,
+    ThreadCount.twelve,
+    ThreadCount.twentyFour,
+  ];
+
+  String get countText => count.toString();
+  List<String> get allCountTexts => allCounts.map((count) => count.toString()).toList();
+
+  void cycle() {
     int idx = allCounts.indexOf(count);
     count = allCounts[(idx + 1) % allCounts.length];
-    notifyListeners();
+  }
+}
+
+class LogicColorCode {
+  String code = "tia";
+  Map<String, ColorCode> codes = getCodes();
+
+  List<String> get codeNames => codes.keys.toList(); // ["tia", "tkf"]
+  ColorCode get colorCode => codes[code]!;
+  bool get hasCodes => codes.isNotEmpty;
+
+  static Map<String, ColorCode> getCodes() {
+    return defaultColorCodes;
   }
 
-  void cylceColorGroup() {
-    int idx = allColorGroups.indexOf(colorGroupName);
-    colorGroupName = allColorGroups[(idx + 1) % allColorGroups.length];
-    notifyListeners();
+  void loadCodes() {
+    codes = LogicColorCode.getCodes();
+  }
+
+  ColorCode get(int idx) {
+    return codes.values.elementAt(idx);
   }
 
   String getName(int idx) {
-    return idx == -1 ? "_" : colorGroup.get(idx - 1).name;
+    return idx == -1 ? "_" : colorCode.get(idx - 1).name;
   }
 
   Color getColor(int idx) {
-    return idx == -1 ? Std.color.black : colorGroup.get(idx - 1).color;
+    return idx == -1 ? Std.color.transparent : colorCode.get(idx - 1).color;
+  }
+
+  void cycle() {
+    int idx = codeNames.indexOf(code);
+    code = codeNames[(idx + 1) % codeNames.length];
   }
 }

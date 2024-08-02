@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:telekom/functions/width.dart';
+import 'package:get/get.dart';
 import 'package:telekom/static/std/std.dart';
+import 'package:telekom/ui/custom/custom_container.dart';
 
 class DataContainerRow extends StatelessWidget {
   const DataContainerRow({
@@ -8,29 +9,17 @@ class DataContainerRow extends StatelessWidget {
     required this.dataName,
     required this.data,
     this.color,
+    this.textSize,
   });
 
   final String dataName;
   final String data;
   final Color? color;
+  final double? textSize;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: Std.padding.vertical5,
-      width: width(context, 1),
-      decoration: BoxDecoration(
-        color: Std.color.primary,
-        borderRadius: BorderRadius.circular(5),
-        boxShadow: [
-          BoxShadow(
-            color: Std.color.tertiary,
-            blurRadius: 2,
-            spreadRadius: 2.5,
-            offset: const Offset(0, 2.5),
-          )
-        ],
-      ),
+    return CustomContainer(
       child: Padding(
         padding: Std.padding.all10,
         child: Row(
@@ -39,9 +28,9 @@ class DataContainerRow extends StatelessWidget {
             Text(
               dataName,
               textAlign: TextAlign.start,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 20,
+                fontSize: textSize ?? 20,
               ),
             ),
             Row(
@@ -50,9 +39,9 @@ class DataContainerRow extends StatelessWidget {
                 Text(
                   data,
                   textAlign: TextAlign.start,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: textSize ?? 20,
                   ),
                 ),
                 Std.space.W10,

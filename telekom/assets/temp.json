@@ -1,0 +1,132 @@
+[
+  {
+    "id": "tia",
+    "colors": {
+      "blue": {
+        "id": "blue",
+        "name": "Plava",
+        "color": "#0070c2"
+      },
+      "orange": {
+        "id": "orange",
+        "name": "Narandžasta",
+        "color": "#f8974a"
+      },
+      "green": {
+        "id": "green",
+        "name": "Zelena",
+        "color": "#02af55"
+      },
+      "brown": {
+        "id": "brown",
+        "name": "Braon",
+        "color": "#9a4608"
+      },
+      "gray": {
+        "id": "gray",
+        "name": "Siva",
+        "color": "#808080"
+      },
+      "white": {
+        "id": "white",
+        "name": "Bela",
+        "color": "#ffffff"
+      },
+      "red": {
+        "id": "red",
+        "name": "Crvena",
+        "color": "#fd0002"
+      },
+      "black": {
+        "id": "black",
+        "name": "Crna",
+        "color": "#010101"
+      },
+      "yellow": {
+        "id": "yellow",
+        "name": "Žuta",
+        "color": "#ffff00"
+      },
+      "purple": {
+        "id": "purple",
+        "name": "Ljubičasta",
+        "color": "#6b2cae"
+      },
+      "pink": {
+        "id": "pink",
+        "name": "Roze",
+        "color": "#fd64cc"
+      },
+      "lightBlue": {
+        "id": "lightBlue",
+        "name": "Svetlo Plava",
+        "color": "#02b0ed"
+      }
+    }
+  },
+  {
+    "id": "tkf",
+    "colors": {
+      "red": {
+        "id": "red",
+        "name": "Crvena",
+        "color": "#fd0002"
+      },
+      "green": {
+        "id": "green",
+        "name": "Zelena",
+        "color": "#02af55"
+      },
+      "blue": {
+        "id": "blue",
+        "name": "Plava",
+        "color": "#0070c2"
+      },
+      "yellow": {
+        "id": "yellow",
+        "name": "Žuta",
+        "color": "#ffff00"
+      },
+      "white": {
+        "id": "white",
+        "name": "Bela",
+        "color": "#ffffff"
+      },
+      "gray": {
+        "id": "gray",
+        "name": "Siva",
+        "color": "#808080"
+      },
+      "brown": {
+        "id": "brown",
+        "name": "Braon",
+        "color": "#9a4608"
+      },
+      "purple": {
+        "id": "purple",
+        "name": "Ljubičasta",
+        "color": "#6b2cae"
+      },
+      "orange": {
+        "id": "orange",
+        "name": "Narandžasta",
+        "color": "#f8974a"
+      },
+      "black": {
+        "id": "black",
+        "name": "Crna",
+        "color": "#010101"
+      },
+      "pink": {
+        "id": "pink",
+        "name": "Roze",
+        "color": "#fd64cc"
+      },
+      "lightBlue": {
+        "id": "lightBlue",
+        "name": "Svetlo Plava",
+        "color": "#02b0ed"
+      }
+    }
+  }
+]

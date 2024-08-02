@@ -1,6 +1,6 @@
 use std::io::stdin;
 
-use algorithm::machine::Machine;
+use algorithm_v2::machine::Machine;
 
 fn main() {
     println!("Unesite broj vlakna: ");

@@ -1,14 +1,15 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:ui';
+import 'package:telekom/model/clr.dart';
 
 class ColorCode {
-  String id;
-  String name;
-  Color color;
+  final String id;
+  final Map<String, Clr> colors;
 
   ColorCode({
     required this.id,
-    required this.name,
-    required this.color,
+    required this.colors,
   });
+
+  Clr get(int idx) {
+    return colors.values.elementAt(idx);
+  }
 }

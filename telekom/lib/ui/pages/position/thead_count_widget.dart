@@ -12,7 +12,7 @@ class TheadCountWidget extends StatelessWidget {
     final logicProvider = context.watch<LogicProvider>();
 
     return GestureDetector(
-      onTap: logicProvider.cycleCount,
+      onTap: logicProvider.cycleTheadCount,
       child: Container(
         width: width(context, .4),
         margin: Std.padding.vertical5,
@@ -40,7 +40,7 @@ class TheadCountWidget extends StatelessWidget {
               ),
             ),
             Text(
-              "${logicProvider.count.n}",
+              "${logicProvider.threadCount.count.n}",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,

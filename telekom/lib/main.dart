@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:telekom/provider/color_codes_provider.dart';
 import 'package:telekom/provider/logic_provider.dart';
 import 'package:telekom/provider/navbar_provider.dart';
+import 'package:telekom/provider/settings_provider.dart';
 import 'package:telekom/static/std/std.dart';
 import 'package:telekom/ui/pages/home_page.dart';
 
@@ -27,6 +29,8 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => NavBarProvider()),
         ChangeNotifierProvider(create: (_) => LogicProvider()),
+        ChangeNotifierProvider(create: (_) => ColorCodesProvider()),
+        ChangeNotifierProvider(create: (_) => SettingsProvider()),
       ],
       child: const MainApp(),
     ),

@@ -11,8 +11,11 @@ class ColorGroupWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final logicProvider = context.watch<LogicProvider>();
 
+    final codeName = logicProvider.colorCode.code.toUpperCase();
+    final colorIdx = logicProvider.colorCode.codeNames.indexOf(logicProvider.colorCode.code) + 1;
+
     return GestureDetector(
-      onTap: logicProvider.cylceColorGroup,
+      onTap: logicProvider.cycleColorCode,
       child: Container(
         width: width(context, .4),
         margin: Std.padding.vertical5,
@@ -40,7 +43,7 @@ class ColorGroupWidget extends StatelessWidget {
               ),
             ),
             Text(
-              logicProvider.colorGroupName.toUpperCase(),
+              "$codeName($colorIdx)",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
