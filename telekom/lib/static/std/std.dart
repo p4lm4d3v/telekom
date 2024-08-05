@@ -5,9 +5,9 @@ import 'package:telekom/static/std/std_padding.dart';
 import 'package:telekom/static/std/std_space.dart';
 
 class Std {
-  static StdColor get color => StdColor();
-  static StdSpace get space => StdSpace();
-  static StdPadding get padding => StdPadding();
   static StdDuration get duration => StdDuration();
+  static StdPadding get padding => StdPadding();
+  static StdSpace get space => StdSpace();
+  static StdColor get color => StdColor();
   static StdIcon get icon => StdIcon();
 }

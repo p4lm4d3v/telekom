@@ -29,7 +29,7 @@ class StdSpace {
     double vertical = 0,
   }) {
     return Container(
-      margin: Std.padding.symmetric(horizontal, vertical),
+      margin: Std.padding.symmetric(h: horizontal, v: vertical),
       color: color,
       height: height,
     );

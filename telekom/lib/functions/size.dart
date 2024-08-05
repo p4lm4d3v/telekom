@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-Size size(BuildContext context, widthPercentage, heightPercentage) {
+Size size(double widthFraction, double heightFraction, BuildContext context) {
   Size size = MediaQuery.of(context).size;
   return Size(
-    size.width * widthPercentage,
-    size.height * heightPercentage,
+    size.width * widthFraction,
+    size.height * heightFraction,
   );
 }

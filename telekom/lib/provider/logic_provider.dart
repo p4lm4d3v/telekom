@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:telekom/model/color_code.dart';
 import 'package:telekom/model/thread_count.dart';
 import 'package:telekom/static/default_color_groups.dart';
@@ -28,9 +27,12 @@ class LogicProvider extends ChangeNotifier {
   void popNumber() => notify(() => input.pop());
   void clearText() => notify(() => input.clear());
 
-  void cycleTheadCount() => notify(() => threadCount.cycle());
+  void prevThread() => notify(() => threadCount.previous());
+  void nextThread() => notify(() => threadCount.next());
 
-  void cycleColorCode() => notify(() => colorCode.cycle());
+  void prevCode() => notify(() => colorCode.previous());
+  void nextCode() => notify(() => colorCode.next());
+  void setCode(String code) => notify(() => colorCode.set(code));
 }
 
 class LogicInput {
@@ -67,21 +69,26 @@ class LogicTheadCount {
   String get countText => count.toString();
   List<String> get allCountTexts => allCounts.map((count) => count.toString()).toList();
 
-  void cycle() {
+  void next() {
     int idx = allCounts.indexOf(count);
     count = allCounts[(idx + 1) % allCounts.length];
+  }
+
+  void previous() {
+    int idx = allCounts.indexOf(count);
+    count = allCounts[(idx - 1) % allCounts.length];
   }
 }
 
 class LogicColorCode {
   String code = "tia";
-  Map<String, ColorCode> codes = getCodes();
+  List<ColorCode> codes = getCodes();
 
-  List<String> get codeNames => codes.keys.toList(); // ["tia", "tkf"]
-  ColorCode get colorCode => codes[code]!;
+  List<String> get codeNames => codes.map((code) => code.name).toList(); // ["tia", "tkf"]
+  ColorCode get colorCode => codes.first;
   bool get hasCodes => codes.isNotEmpty;
 
-  static Map<String, ColorCode> getCodes() {
+  static List<ColorCode> getCodes() {
     return defaultColorCodes;
   }
 
@@ -89,8 +96,13 @@ class LogicColorCode {
     codes = LogicColorCode.getCodes();
   }
 
-  ColorCode get(int idx) {
-    return codes.values.elementAt(idx);
+  ColorCode? get(int idx) {
+    if (idx < 0 || idx >= codes.length) return null;
+    return codes.elementAt(idx);
+  }
+
+  void set(String code) {
+    this.code = code;
   }
 
   String getName(int idx) {
@@ -101,8 +113,13 @@ class LogicColorCode {
     return idx == -1 ? Std.color.transparent : colorCode.get(idx - 1).color;
   }
 
-  void cycle() {
+  void next() {
     int idx = codeNames.indexOf(code);
-    code = codeNames[(idx + 1) % codeNames.length];
+    code = codeNames[(idx + 1 + codeNames.length) % codeNames.length];
+  }
+
+  void previous() {
+    int idx = codeNames.indexOf(code);
+    code = codeNames[(idx - 1 + codeNames.length) % codeNames.length];
   }
 }

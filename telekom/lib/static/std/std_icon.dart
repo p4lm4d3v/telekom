@@ -13,4 +13,5 @@ class StdIcon {
   IconData algorithm = Icons.alternate_email;
   IconData backspace = Icons.backspace_outlined;
   IconData block = Icons.block;
+  IconData refresh = Icons.refresh;
 }

@@ -3,6 +3,10 @@ enum ThreadCount {
   twelve(12),
   twentyFour(24);
 
-  final int n;
-  const ThreadCount(this.n);
+  final int _n;
+  const ThreadCount(this._n);
+
+  int get() {
+    return _n;
+  }
 }

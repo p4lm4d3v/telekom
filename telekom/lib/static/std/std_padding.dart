@@ -30,7 +30,16 @@ class StdPadding {
   EdgeInsets vertical20 = const EdgeInsets.symmetric(vertical: 20.0);
   EdgeInsets vertical30 = const EdgeInsets.symmetric(vertical: 30.0);
 
-  EdgeInsets symmetric(double h, double v) {
+  EdgeInsets symmetric({required double h, required double v}) {
     return EdgeInsets.symmetric(horizontal: h, vertical: v);
   }
+
+  EdgeInsets get h10v5 => symmetric(h: 10, v: 5);
+  EdgeInsets get h5v10 => symmetric(h: 5, v: 10);
+
+  EdgeInsets get h20v10 => symmetric(h: 20, v: 10);
+  EdgeInsets get h10v20 => symmetric(h: 10, v: 20);
+
+  EdgeInsets get h20v7 => symmetric(h: 20, v: 7);
+  EdgeInsets get h7v20 => symmetric(h: 7, v: 20);
 }

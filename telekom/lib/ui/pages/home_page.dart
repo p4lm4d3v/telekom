@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:telekom/provider/navbar_provider.dart';
-import 'package:telekom/static/std/std.dart';
-// import 'package:hive/hive.dart';
-// import 'package:telekom/model/db_keys.dart';
+import 'package:telekom/provider/theme_provider.dart';
 import 'package:telekom/ui/navbar/navbar.dart';
 
 class HomePage extends StatelessWidget {
@@ -30,9 +28,10 @@ class HomePage extends StatelessWidget {
     // }
 
     final navbarProvider = context.watch<NavBarProvider>();
+    final themeProvider = context.watch<ThemeProvider>();
 
     return Scaffold(
-      backgroundColor: Std.color.secondary,
+      backgroundColor: themeProvider.secondary,
       bottomNavigationBar: const NavBar(),
       body: navbarProvider.getPage(),
     );
